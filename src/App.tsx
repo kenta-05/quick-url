@@ -1,38 +1,28 @@
-import * as React from "react"
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+import { ChakraProvider } from "@chakra-ui/react";
+import customTheme from "./theme/customTheme";
+import { BrowserRouter } from "react-router-dom";
+import AppRouter from "./Router";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 export const App = () => (
-  <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
-    </Box>
-  </ChakraProvider>
-)
+  <HelmetProvider>
+    <Helmet>
+      <title>QuickURL</title>
+      <meta
+        name="description"
+        content="URLを保存しておけるブックマーク用のサービス"
+      />
+      <meta name="keywords" content="URL リンク 保存 API通信 pokeAPI" />
+      <meta property="og:title" content="QuickURLのHome画面" />
+      <meta
+        property="og:description"
+        content="継続して使うURLのリンクをブックマークとして保存したり、同時に複数のリンクを開くことができるサービスです"
+      />
+    </Helmet>
+    <BrowserRouter>
+      <ChakraProvider theme={customTheme}>
+        <AppRouter />
+      </ChakraProvider>
+    </BrowserRouter>
+  </HelmetProvider>
+);
