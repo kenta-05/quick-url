@@ -248,10 +248,11 @@ const SettingModal: React.FC<SettingModalProps> = ({ isOpen, onClose }) => {
                       }}
                     />
                     <Text
+                      userSelect="text"
                       fontSize="lg"
                       whiteSpace="nowrap"
-                      overflow="hidden"
-                      textOverflow="ellipsis"
+                      // overflow="hidden"
+                      // textOverflow="ellipsis"
                     >
                       {url}
                     </Text>

@@ -260,10 +260,11 @@ const ChangingModal: React.FC<ChangingModalProps> = ({
                       }}
                     />
                     <Text
+                      userSelect="text"
                       fontSize="lg"
                       whiteSpace="nowrap"
-                      overflow="hidden"
-                      textOverflow="ellipsis"
+                      // overflow="hidden"
+                      // textOverflow="ellipsis"
                     >
                       {url}
                     </Text>

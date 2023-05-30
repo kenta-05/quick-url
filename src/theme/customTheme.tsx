@@ -80,6 +80,7 @@ const customTheme = extendTheme({
   styles: {
     global: {
       body: {
+        userSelect: "none",
         fontFamily: "Noto Sans JP",
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
