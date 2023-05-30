@@ -21,7 +21,7 @@ function Sidebar() {
       position="sticky"
       top="12"
     >
-      <Section icon={AiOutlineHome} title={"Home"} url={"/"} />
+      <Section icon={AiOutlineHome} title={"URL"} url={"/"} />
       <Section icon={FaRegPaperPlane} title={"Feedback"} url={"/feedback"} />
       <AccountButton />
       <UrlSwitch />

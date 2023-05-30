@@ -1,8 +1,9 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import customTheme from "./theme/customTheme";
 import { BrowserRouter } from "react-router-dom";
-import AppRouter from "./Router";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import AppRouter from "./Router";
+import Maintenance from "./Maintenance";
 
 export const App = () => (
   <HelmetProvider>
@@ -22,6 +23,7 @@ export const App = () => (
     <BrowserRouter>
       <ChakraProvider theme={customTheme}>
         <AppRouter />
+        {/* <Maintenance /> */}
       </ChakraProvider>
     </BrowserRouter>
   </HelmetProvider>
