@@ -1,4 +1,13 @@
-import { Box, Button, Flex, HStack, Switch, Text } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Button,
+  Flex,
+  HStack,
+  Switch,
+  Text,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import UrlCard from "../Organisms/UrlCard";
 import AddCard from "../Organisms/AddCard";
 import React, { useEffect, useState } from "react";
@@ -11,13 +20,17 @@ import {
 } from "@firebase/firestore";
 import { auth, db } from "../../firebase";
 import { ListObject } from "../../interfaces/mainInterface";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SubHeader from "../Templates/SubHeader";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Section from "../Molecules/Section";
+import { AiOutlineHome } from "react-icons/ai";
 
 function Home() {
+  const [isLargerThan580] = useMediaQuery("(min-width: 580px)");
   const [listsData, setListsData] = useState<ListObject[]>([]);
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
@@ -37,17 +50,27 @@ function Home() {
   return (
     <>
       <SubHeader justify="space-between">
-        <Link
-          to="/question"
-          style={{
-            color: "black",
-            fontFamily: "Noto Sans JP",
-            fontSize: "1.2rem",
-            textDecoration: "underline",
+        <Text
+          variant="secondary"
+          onClick={() => {
+            navigate("/account");
           }}
         >
-          Q. タブが複数個開かない場合はこちら
-        </Link>
+          Account
+        </Text>
+        {isLargerThan580 && (
+          <Link
+            to="/question"
+            style={{
+              color: "black",
+              fontFamily: "Noto Sans JP",
+              fontSize: "1.2rem",
+              textDecoration: "underline",
+            }}
+          >
+            Q. タブが複数個開かない場合はこちら
+          </Link>
+        )}
       </SubHeader>
       <Flex p="5" wrap="wrap">
         {listsData.map((list) => {

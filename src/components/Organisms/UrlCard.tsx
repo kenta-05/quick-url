@@ -6,14 +6,7 @@ import {
   Link,
   Text,
   VStack,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import EllipsesIcon from "../Atoms/EllipsesIcon";
 import { UrlCardProps } from "../../interfaces/mainInterface";
@@ -27,6 +20,8 @@ interface userDataInterface {
 }
 
 const UrlCard: React.FC<UrlCardProps> = ({ listData }) => {
+  const [isLargerThan430] = useMediaQuery("(min-width: 430px)");
+  const [isLargerThan380] = useMediaQuery("(min-width: 380px)");
   const [user] = useAuthState(auth);
   const [userData, setUserData] = useState<userDataInterface>();
 
@@ -54,8 +49,9 @@ const UrlCard: React.FC<UrlCardProps> = ({ listData }) => {
         sx={{
           borderRadius: "xl",
           p: "1",
-          m: "3",
-          w: "17.4rem",
+          mx: isLargerThan380 && "4",
+          my: "3",
+          w: isLargerThan430 || !isLargerThan380 ? "17.4rem" : "14rem",
         }}
         position="relative"
       >
@@ -74,7 +70,6 @@ const UrlCard: React.FC<UrlCardProps> = ({ listData }) => {
               bg: "primary.500",
               fontSize: "56",
               borderRadius: "lg",
-              cursor: "pointer",
               transition: "filter 0.2s",
             }}
             justify="center"

@@ -13,9 +13,8 @@ function SubHeader({ children, ...props }: SubHeaderProps) {
         h: "12",
         px: "3",
         boxShadow: "0px 0px 15px -5px #777777",
-        position: "sticky",
-        top: "12",
         alignItems: "center",
+        zIndex: "1",
       }}
       {...props}
     >

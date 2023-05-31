@@ -23,6 +23,8 @@ import SubModalBox from "../Molecules/SubModalBox";
 import { useNavigate } from "react-router-dom";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { Switch } from "@chakra-ui/react";
+import SubHeader from "../Templates/SubHeader";
+import AccountButton from "../Molecules/Account";
 
 function Account() {
   const toast = useToast();
@@ -62,7 +64,16 @@ function Account() {
 
   return (
     <>
-      {/* <SubHeader /> */}
+      <SubHeader>
+        <Text
+          variant="secondary"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Home
+        </Text>
+      </SubHeader>
       <Flex w="100%" h="calc(100% - 48px)" justify="center" align="center">
         <VStack
           w="70%"
