@@ -57,6 +57,7 @@ function Feedback() {
           bg="rgba(255, 255, 255, 0.6)"
           mx="auto"
           minH="calc(100vh - 6rem)"
+          px="4"
         >
           {/* タイトル部分 */}
           <Box borderBottom="2px solid" borderColor="secondary.500" px="8">
@@ -65,6 +66,7 @@ function Feedback() {
                 fontSize: "4xl",
                 mt: "16",
                 color: "secondary.500",
+                pb: "1",
               }}
             >
               皆様のフィードバックが必要です!
@@ -97,7 +99,7 @@ function Feedback() {
                 bg: "white",
                 border: "2px solid",
                 borderColor: "secondary.400",
-                w: "37rem",
+                w: { base: "15rem", sm: "17rem", md: "22rem", lg: "37rem" },
                 h: "12rem",
                 cursor: "pointer",
                 _focus: {

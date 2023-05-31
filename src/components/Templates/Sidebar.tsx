@@ -1,6 +1,6 @@
 import { VStack, useMediaQuery } from "@chakra-ui/react";
 import { FaRegPaperPlane } from "react-icons/fa";
-import { AiOutlineHome } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineQuestionCircle } from "react-icons/ai";
 import Section from "../Molecules/Section";
 import AccountButton from "../Molecules/Account";
 import UrlSwitch from "../Molecules/urlSwitch";
@@ -26,12 +26,17 @@ function Sidebar() {
     >
       <Section
         icon={AiOutlineHome}
-        title={isLargerMd ? "Home" : ""}
+        title={isLargerMd ? "ホーム" : ""}
         url={"/"}
       />
       <Section
+        icon={AiOutlineQuestionCircle}
+        title={isLargerMd ? "使い方" : ""}
+        url={"/howtouse"}
+      />
+      <Section
         icon={FaRegPaperPlane}
-        title={isLargerMd ? "Feedback" : ""}
+        title={isLargerMd ? "フィードバック" : ""}
         url={"/feedback"}
       />
       <AccountButton />

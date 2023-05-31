@@ -32,8 +32,8 @@ function AccountButton() {
       ) : (
         <Avatar boxSize={9} src={user.photoURL!} />
       )}
-      <Text variant="secondary" pl="1" fontFamily="Roboto">
-        {isLargerThan580 ? "Account" : ""}
+      <Text variant="secondary" pl="1" fontWeight="bold">
+        {isLargerThan580 ? "アカウント" : ""}
       </Text>
     </HStack>
   );

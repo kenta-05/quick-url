@@ -35,7 +35,7 @@ const customTheme = extendTheme({
         },
         secondary: {
           color: "secondary.500",
-          fontSize: "1.4rem",
+          fontSize: "1.3rem",
         },
         tertiary: {
           fontSize: "lg",

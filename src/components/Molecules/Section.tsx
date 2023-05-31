@@ -31,7 +31,7 @@ const Section: React.FC<Props> = ({ icon, title, url }) => {
       boxShadow="0px 0px 6px -2px #777777"
     >
       <Icon as={icon} boxSize={9} color="secondary.500" />
-      <Text variant="secondary" cursor="pointer" pl="1" fontFamily="Roboto">
+      <Text variant="secondary" cursor="pointer" pl="1" fontWeight="bold">
         {title}
       </Text>
     </HStack>

@@ -49,7 +49,7 @@ const UrlCard: React.FC<UrlCardProps> = ({ listData }) => {
         sx={{
           borderRadius: "xl",
           p: "1",
-          mx: isLargerThan380 && "4",
+          mx: isLargerThan380 && "3",
           my: "3",
           w: isLargerThan430 || !isLargerThan380 ? "17.4rem" : "14rem",
         }}

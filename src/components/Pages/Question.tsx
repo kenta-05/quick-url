@@ -1,33 +1,11 @@
-import {
-  Box,
-  Flex,
-  HStack,
-  Image,
-  Skeleton,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Image, Text, VStack } from "@chakra-ui/react";
 import question1 from "../../asset/question-1.png";
 import question2 from "../../asset/question-2.png";
-import React from "react";
-import { Link } from "react-router-dom";
-import SubHeader from "../Templates/SubHeader";
 
 function Question() {
   return (
     <>
       {/* 画面上部のヘッダー */}
-      <SubHeader>
-        <Link
-          to="/"
-          style={{
-            fontSize: "1.2rem",
-            position: "absolute",
-          }}
-        >
-          ←ホーム画面に戻る
-        </Link>
-      </SubHeader>
 
       <VStack align="center" bg="rgba(255, 255, 255, 0.6)" mx="auto">
         <Box>

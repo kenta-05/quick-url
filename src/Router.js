@@ -8,6 +8,7 @@ import Question from "./components/Pages/Question";
 import { Flex, Box } from "@chakra-ui/react";
 import NotFound from "./components/Pages/NotFound";
 import Account from "./components/Pages/Account";
+import HowToUse from "./components/Pages/HowToUse";
 
 function AppRouter() {
   return (
@@ -19,6 +20,7 @@ function AppRouter() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/feedback" element={<Feedback />} />
+            <Route path="/howtouse" element={<HowToUse />} />
             <Route path="/account" element={<Account />} />
             <Route path="/question" element={<Question />} />
             <Route path="*" element={<NotFound />} />
