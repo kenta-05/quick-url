@@ -23,11 +23,10 @@ import { ListObject } from "../../interfaces/mainInterface";
 import { Link, useNavigate } from "react-router-dom";
 import SubHeader from "../Templates/SubHeader";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Section from "../Molecules/Section";
-import { AiOutlineHome } from "react-icons/ai";
 
 function Home() {
-  const [isLargerThan580] = useMediaQuery("(min-width: 580px)");
+  const [isLargerSm] = useMediaQuery("(min-width: 380px)");
+  const [isLargerMd] = useMediaQuery("(min-width: 580px)");
   const [listsData, setListsData] = useState<ListObject[]>([]);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
@@ -50,15 +49,17 @@ function Home() {
   return (
     <>
       <SubHeader justify="space-between">
-        <Text
-          variant="secondary"
-          onClick={() => {
-            navigate("/account");
-          }}
-        >
-          Account
-        </Text>
-        {isLargerThan580 && (
+        {!isLargerSm && (
+          <Text
+            variant="secondary"
+            onClick={() => {
+              navigate("/account");
+            }}
+          >
+            Account
+          </Text>
+        )}
+        {isLargerMd && (
           <Link
             to="/question"
             style={{

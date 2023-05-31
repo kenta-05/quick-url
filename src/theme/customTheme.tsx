@@ -16,6 +16,13 @@ const customTheme = extendTheme({
       600: "#ce2121",
     },
   },
+  breakpoints: {
+    sm: "23.75rem",
+    md: "36.25rem",
+    lg: "54rem",
+    xl: "83.75rem",
+    "2xl": "96rem",
+  },
   components: {
     Text: {
       baseStyle: {
@@ -63,9 +70,6 @@ const customTheme = extendTheme({
           borderRadius: "full",
           bg: "tertiary.500",
           color: "white",
-          fontSize: "4xl",
-          w: "21rem",
-          h: "4.1rem",
           boxShadow: "0px 6px 2px #591212",
           transition: "transform 0.3s, box-shadow 0.3s",
           _hover: {

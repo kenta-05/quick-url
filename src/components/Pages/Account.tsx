@@ -1,19 +1,18 @@
 import {
   Avatar,
-  Box,
   Button,
   Flex,
   HStack,
-  Image,
   Modal,
-  ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
   ModalOverlay,
   Text,
   VStack,
+  useBreakpointValue,
   useDisclosure,
+  useMediaQuery,
   useToast,
 } from "@chakra-ui/react";
 import { signInWithPopup, signOut } from "firebase/auth";
@@ -22,15 +21,18 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import SubModalBox from "../Molecules/SubModalBox";
 import { useNavigate } from "react-router-dom";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { Switch } from "@chakra-ui/react";
 import SubHeader from "../Templates/SubHeader";
-import AccountButton from "../Molecules/Account";
 
 function Account() {
+  const [isLargerMd] = useMediaQuery("(min-width: 380px)");
   const toast = useToast();
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [user] = useAuthState(auth);
+  const text = useBreakpointValue({
+    base: "QuickURLを\n始めましょう",
+    xl: "QuickURLを始めましょう",
+  });
 
   const googleLogin = () => {
     signInWithPopup(auth, provider)
@@ -61,25 +63,31 @@ function Account() {
   const googleLogout = () => {
     signOut(auth);
   };
+  const textSize = { base: "3rem", md: "3.4rem", lg: "4rem" };
+  const buttonWidth = { base: "17rem", md: "21rem" };
+  const buttonHeight = { base: "3.6rem", md: "4.1rem" };
+  const buttonText = { base: "3xl", md: "4xl" };
 
   return (
     <>
       <SubHeader>
-        <Text
-          variant="secondary"
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          Home
-        </Text>
+        {!isLargerMd && (
+          <Text
+            variant="secondary"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            Home
+          </Text>
+        )}
       </SubHeader>
       <Flex w="100%" h="calc(100% - 48px)" justify="center" align="center">
         <VStack
-          w="70%"
-          h="70%"
+          w={{ base: "100%", lg: "70%" }}
+          h={{ base: "100vh", sm: "100%", lg: "70%" }}
           bg="rgba(255, 255, 255, 0.6)"
-          spacing="4.2rem"
+          spacing="2.5rem"
           borderRadius="lg"
           justify="center"
           pb="3"
@@ -89,11 +97,22 @@ function Account() {
               <Text
                 variant="secondary"
                 fontFamily="Noto Sans JP"
-                sx={{ fontSize: "5rem", fontWeight: "bold" }}
+                sx={{
+                  fontSize: textSize,
+                  fontWeight: "bold",
+                  whiteSpace: "pre-wrap",
+                  px: "3",
+                }}
               >
-                QuickURLを始めましょう
+                {text}
               </Text>
-              <Button variant="account" onClick={googleLogin}>
+              <Button
+                variant="account"
+                w={buttonWidth}
+                h={buttonHeight}
+                fontSize={buttonText}
+                onClick={googleLogin}
+              >
                 Googleでログイン
               </Button>
             </>

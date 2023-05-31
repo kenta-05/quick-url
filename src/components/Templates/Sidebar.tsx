@@ -6,16 +6,15 @@ import AccountButton from "../Molecules/Account";
 import UrlSwitch from "../Molecules/urlSwitch";
 
 function Sidebar() {
-  const [isLargerThan580] = useMediaQuery("(min-width: 580px)");
-  const [isLargerThan380] = useMediaQuery("(min-width: 380px)");
+  const [isLargerMd] = useMediaQuery("(min-width: 580px)");
 
   return (
     <VStack
-      display={isLargerThan380 ? "flex" : "none"}
+      display={{ base: "none", sm: "flex" }}
       sx={{
         bg: "primary.500",
         h: "calc(100vh - 3rem)",
-        w: isLargerThan580 ? "56" : "20",
+        w: { base: "20", md: "56" },
         pt: "12",
         boxShadow: "0px 0px 15px -5px #777777",
         zIndex: "10",
@@ -27,16 +26,16 @@ function Sidebar() {
     >
       <Section
         icon={AiOutlineHome}
-        title={isLargerThan580 ? "Home" : ""}
+        title={isLargerMd ? "Home" : ""}
         url={"/"}
       />
       <Section
         icon={FaRegPaperPlane}
-        title={isLargerThan580 ? "Feedback" : ""}
+        title={isLargerMd ? "Feedback" : ""}
         url={"/feedback"}
       />
       <AccountButton />
-      {isLargerThan580 && <UrlSwitch />}
+      {isLargerMd && <UrlSwitch />}
     </VStack>
   );
 }
