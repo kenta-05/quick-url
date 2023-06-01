@@ -6,10 +6,11 @@ import {
   Link,
   Text,
   VStack,
+  useColorModeValue,
   useMediaQuery,
 } from "@chakra-ui/react";
 import EllipsesIcon from "../Atoms/EllipsesIcon";
-import { UrlCardProps } from "../../interfaces/mainInterface";
+import { UrlCardProps } from "../../interfaces/Interface";
 import { useEffect, useState } from "react";
 import { doc, onSnapshot } from "firebase/firestore";
 import { auth, db } from "../../firebase";
@@ -20,6 +21,15 @@ interface userDataInterface {
 }
 
 const UrlCard: React.FC<UrlCardProps> = ({ listData }) => {
+  const secondary400 = useColorModeValue("secondary.400.light", "#575757");
+  const tertiary500 = useColorModeValue(
+    "tertiary.500.light",
+    "tertiary.500.dark"
+  );
+  const tertiary600 = useColorModeValue(
+    "tertiary.600.light",
+    "tertiary.600.dark"
+  );
   const [isLargerThan430] = useMediaQuery("(min-width: 430px)");
   const [isLargerThan380] = useMediaQuery("(min-width: 380px)");
   const [user] = useAuthState(auth);
@@ -45,7 +55,7 @@ const UrlCard: React.FC<UrlCardProps> = ({ listData }) => {
     <>
       <Box
         boxShadow="0px 0px 6px 1px #777777"
-        bg="linear-gradient(to bottom right, #5b679e, #7b87b5)"
+        bg={secondary400}
         sx={{
           borderRadius: "xl",
           p: "1",
@@ -67,7 +77,7 @@ const UrlCard: React.FC<UrlCardProps> = ({ listData }) => {
               mr: "1",
               pb: "2",
               boxSize: "20",
-              bg: "primary.500",
+              bg: "white",
               fontSize: "56",
               borderRadius: "lg",
               transition: "filter 0.2s",
@@ -77,7 +87,16 @@ const UrlCard: React.FC<UrlCardProps> = ({ listData }) => {
           >
             {listData.icon}
           </Flex>
-          <Button variant="secondary" onClick={openUrl}>
+          <Button
+            variant="secondary"
+            onClick={openUrl}
+            sx={{
+              bg: tertiary500,
+              _hover: {
+                bg: tertiary600,
+              },
+            }}
+          >
             OPEN
           </Button>
         </HStack>

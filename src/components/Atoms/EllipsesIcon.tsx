@@ -1,7 +1,12 @@
-import { HStack, Icon, useDisclosure } from "@chakra-ui/react";
+import {
+  HStack,
+  Icon,
+  useColorModeValue,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { BsFillGearFill } from "react-icons/bs";
 import ChangingModal from "../Organisms/ChangingModal";
-import { EllipsesIconProps } from "../../interfaces/mainInterface";
+import { EllipsesIconProps } from "../../interfaces/Interface";
 
 const EllipsesIcon: React.FC<EllipsesIconProps> = ({
   name,
@@ -9,6 +14,10 @@ const EllipsesIcon: React.FC<EllipsesIconProps> = ({
   docId,
   icon,
 }) => {
+  const primary600 = useColorModeValue(
+    "primary.600.light",
+    "primary.600.light"
+  );
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -26,7 +35,7 @@ const EllipsesIcon: React.FC<EllipsesIconProps> = ({
           h: "6",
           transition: "transform 0.2s",
           _hover: {
-            color: "primary.600",
+            color: primary600,
             transform: "rotate(75deg)",
           },
         }}

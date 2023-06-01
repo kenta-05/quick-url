@@ -1,21 +1,26 @@
-import { Box, Image, Text, VStack } from "@chakra-ui/react";
+import { Box, Image, Text, VStack, useColorModeValue } from "@chakra-ui/react";
 import question1 from "../../asset/question-1.png";
 import question2 from "../../asset/question-2.png";
 
 function Question() {
+  const secondary500 = useColorModeValue(
+    "secondary.500.light",
+    "secondary.500.dark"
+  );
+  const nomal500 = useColorModeValue("nomal500.500.light", "nomal500.500.dark");
   return (
     <>
       {/* 画面上部のヘッダー */}
 
-      <VStack align="center" bg="rgba(255, 255, 255, 0.6)" mx="auto">
+      <VStack align="center" bg={nomal500} mx="auto">
         <Box>
           {/* タイトル部分 */}
-          <Box borderBottom="2px solid" borderColor="secondary.500" px="8">
+          <Box borderBottom="2px solid" borderColor={secondary500} px="8">
             <Text
               sx={{
                 fontSize: "4xl",
                 mt: "16",
-                color: "secondary.500",
+                color: secondary500,
               }}
             >
               OPENを押しても複数のタブが開かない場合

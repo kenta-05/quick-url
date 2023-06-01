@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
 
 interface ModalProps {
@@ -6,11 +6,16 @@ interface ModalProps {
 }
 
 const ModalBox: React.FC<ModalProps> = ({ text }) => {
+  const secondary500 = useColorModeValue(
+    "secondary.500.light",
+    "secondary.500.dark"
+  );
+
   return (
     <Box
       color="white"
       p={3}
-      bg="secondary.500"
+      bg={secondary500}
       fontFamily="Noto Sans JP"
       fontSize="md"
       borderRadius="sm"

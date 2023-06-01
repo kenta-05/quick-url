@@ -1,18 +1,20 @@
-import { VStack, useMediaQuery } from "@chakra-ui/react";
+import { VStack, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { AiOutlineHome, AiOutlineQuestionCircle } from "react-icons/ai";
 import Section from "../Molecules/Section";
 import AccountButton from "../Molecules/Account";
-import UrlSwitch from "../Molecules/urlSwitch";
+import UrlSwitch from "../Molecules/UrlSwitch";
+import ColorModeButton from "../Molecules/DarkModeButton";
 
 function Sidebar() {
-  const [isLargerMd] = useMediaQuery("(min-width: 580px)");
+  const primary500 = useColorModeValue("primary.500.light", "primary.500.dark");
+  const [isLargerMd] = useMediaQuery("(min-width: 592px)");
 
   return (
     <VStack
       display={{ base: "none", sm: "flex" }}
       sx={{
-        bg: "primary.500",
+        bg: primary500,
         h: "calc(100vh - 3rem)",
         w: { base: "20", md: "56" },
         pt: "12",
@@ -41,6 +43,7 @@ function Sidebar() {
       />
       <AccountButton />
       {isLargerMd && <UrlSwitch />}
+      {isLargerMd && <ColorModeButton />}
     </VStack>
   );
 }

@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Text, VStack } from "@chakra-ui/react";
+import { Flex, Image, Text, VStack } from "@chakra-ui/react";
 import notFound1 from "../../asset/notFound-1.png";
 import React from "react";
 

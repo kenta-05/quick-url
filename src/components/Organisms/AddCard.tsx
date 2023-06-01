@@ -1,5 +1,11 @@
 import React from "react";
-import { Icon, VStack, useDisclosure, useMediaQuery } from "@chakra-ui/react";
+import {
+  Icon,
+  VStack,
+  useColorModeValue,
+  useDisclosure,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import SettingModal from "./SettingModal";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +13,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase";
 
 function AddCard() {
+  const secondary400 = useColorModeValue("white", "#cecece");
+  const secondary500 = useColorModeValue("secondary.500.light", "#393939");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
@@ -19,7 +27,7 @@ function AddCard() {
         bg="rgba(255,255,255,0.4)"
         position="relative"
         border="3px dashed"
-        borderColor="secondary.500"
+        borderColor={secondary500}
         justify="center"
         sx={{
           cursor: "pointer",
@@ -30,7 +38,7 @@ function AddCard() {
           my: "3",
           w: isLargerThan430 || !isLargerThan380 ? "17.4rem" : "14rem",
           transition: "bg 2s",
-          _hover: { bg: "white" },
+          _hover: { bg: secondary400 },
         }}
         onClick={() => {
           if (!user) {
@@ -41,7 +49,7 @@ function AddCard() {
       >
         <Icon
           as={IoIosAddCircleOutline}
-          sx={{ color: "secondary.500", boxSize: "20" }}
+          sx={{ color: secondary500, boxSize: "20" }}
         />
       </VStack>
 

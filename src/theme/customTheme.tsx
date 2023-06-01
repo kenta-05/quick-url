@@ -4,24 +4,31 @@ import backgroundImage from "../asset/background.png";
 const customTheme = extendTheme({
   colors: {
     primary: {
-      500: "#f6f8ff",
-      600: "#E1E8FF",
+      500: { light: "#f6f8ff", dark: "#515259" },
+      600: { light: "#E1E8FF", dark: "#2b2d34" },
     },
     secondary: {
-      400: "#8590b7",
-      500: "#5E6DA4",
+      400: { light: "#8590b7", dark: "#747474" },
+      500: { light: "#5E6DA4", dark: "#d7d7d7" },
     },
     tertiary: {
-      500: "#FF4545",
-      600: "#ce2121",
+      500: { light: "#FF4545", dark: "#FF4545" },
+      600: { light: "#ce2121", dark: "#ce2121" },
+    },
+    nomal: {
+      500: { light: "#FFFFFF", dark: "#5b5b5b" },
     },
   },
   breakpoints: {
     sm: "23.75rem",
-    md: "36.25rem",
+    md: "37rem",
     lg: "54rem",
     xl: "83.75rem",
     "2xl": "96rem",
+  },
+  config: {
+    initialColorMode: "dark",
+    useSystemColorMode: false,
   },
   components: {
     Text: {
@@ -34,7 +41,6 @@ const customTheme = extendTheme({
           fontSize: "4xl",
         },
         secondary: {
-          color: "secondary.500",
           fontSize: "1.3rem",
         },
         tertiary: {
@@ -46,16 +52,11 @@ const customTheme = extendTheme({
     Button: {
       variants: {
         primary: {
-          bg: "secondary.400",
           color: "white",
           borderRadius: "sm",
           letterSpacing: "0.065em",
-          _hover: {
-            bg: "secondary.500",
-          },
         },
         secondary: {
-          bg: "tertiary.500",
           color: "white",
           fontSize: "2.3rem",
           borderRadius: "md",
@@ -68,15 +69,9 @@ const customTheme = extendTheme({
         },
         account: {
           borderRadius: "full",
-          bg: "tertiary.500",
           color: "white",
           boxShadow: "0px 6px 2px #591212",
           transition: "transform 0.3s, box-shadow 0.3s",
-          _hover: {
-            bg: "tertiary.600",
-            transform: "translateY(2px)",
-            boxShadow: "0px 0px 2px #591212",
-          },
         },
       },
     },

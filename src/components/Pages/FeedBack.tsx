@@ -5,6 +5,7 @@ import {
   Text,
   Textarea,
   VStack,
+  useColorModeValue,
   useToast,
 } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -13,7 +14,17 @@ import React, { useState } from "react";
 import SubModalBox from "../Molecules/SubModalBox";
 import SubHeader from "../Templates/SubHeader";
 
-function Feedback() {
+const Feedback = () => {
+  const secondary400 = useColorModeValue(
+    "secondary.400.light",
+    "secondary.400.dark"
+  );
+  const secondary500 = useColorModeValue(
+    "secondary.500.light",
+    "secondary.500.dark"
+  );
+  const buttonBg = useColorModeValue("secondary.500.light", "#363636");
+  const nomal500 = useColorModeValue("nomal.500.light", "nomal.500.dark");
   const {
     register,
     handleSubmit,
@@ -53,19 +64,19 @@ function Feedback() {
       <SubHeader />
       <form onSubmit={handleSubmit(submitMail)}>
         <VStack
+          bg={nomal500}
           align="center"
-          bg="rgba(255, 255, 255, 0.6)"
           mx="auto"
           minH="calc(100vh - 6rem)"
           px="4"
         >
           {/* タイトル部分 */}
-          <Box borderBottom="2px solid" borderColor="secondary.500" px="8">
+          <Box borderBottom="2px solid" borderColor={secondary500} px="8">
             <Text
               sx={{
                 fontSize: "4xl",
                 mt: "16",
-                color: "secondary.500",
+                color: secondary500,
                 pb: "1",
               }}
             >
@@ -98,13 +109,13 @@ function Feedback() {
               sx={{
                 bg: "white",
                 border: "2px solid",
-                borderColor: "secondary.400",
+                borderColor: secondary400,
                 w: { base: "15rem", sm: "17rem", md: "22rem", lg: "37rem" },
                 h: "12rem",
                 cursor: "pointer",
                 _focus: {
                   border: "2px solid",
-                  borderColor: "secondary.400",
+                  borderColor: secondary400,
                 },
               }}
               resize="none"
@@ -116,8 +127,8 @@ function Feedback() {
               type="submit"
               variant="primary"
               sx={{
+                bg: buttonBg,
                 fontSize: "1xl",
-                // p: "1.6rem",
                 borderRadius: "md",
               }}
             >
@@ -128,6 +139,6 @@ function Feedback() {
       </form>
     </>
   );
-}
+};
 
 export default Feedback;

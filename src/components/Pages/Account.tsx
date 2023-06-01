@@ -11,6 +11,7 @@ import {
   Text,
   VStack,
   useBreakpointValue,
+  useColorModeValue,
   useDisclosure,
   useMediaQuery,
   useToast,
@@ -24,6 +25,19 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 import SubHeader from "../Templates/SubHeader";
 
 function Account() {
+  const secondary500 = useColorModeValue(
+    "secondary.500.light",
+    "secondary.500.dark"
+  );
+  const tertiary500 = useColorModeValue(
+    "tertiary.500.light",
+    "tertiary.500.dark"
+  );
+  const tertiary600 = useColorModeValue(
+    "tertiary.600.light",
+    "tertiary.600.dark"
+  );
+  const nomal500 = useColorModeValue("nomal.500.light", "nomal.500.dark");
   const [isLargerMd] = useMediaQuery("(min-width: 380px)");
   const toast = useToast();
   const navigate = useNavigate();
@@ -86,7 +100,7 @@ function Account() {
         <VStack
           w={{ base: "100%", lg: "70%" }}
           h={{ base: "100vh", sm: "100%", lg: "70%" }}
-          bg="rgba(255, 255, 255, 0.6)"
+          bg={nomal500}
           spacing="2.5rem"
           borderRadius="lg"
           justify="center"
@@ -102,6 +116,7 @@ function Account() {
                   fontWeight: "bold",
                   whiteSpace: "pre-wrap",
                   px: "3",
+                  color: secondary500,
                 }}
               >
                 {text}
@@ -112,6 +127,14 @@ function Account() {
                 h={buttonHeight}
                 fontSize={buttonText}
                 onClick={googleLogin}
+                sx={{
+                  bg: tertiary500,
+                  _hover: {
+                    bg: tertiary600,
+                    transform: "translateY(2px)",
+                    boxShadow: "0px 0px 2px #591212",
+                  },
+                }}
               >
                 Googleでログイン
               </Button>
@@ -119,22 +142,37 @@ function Account() {
           ) : (
             <>
               <Flex>
-                <Avatar src={user.photoURL!} size="xl" />
-                <HStack spacing={0}>
+                <VStack spacing={0}>
+                  <Avatar src={user.photoURL!} size="xl" />
                   <Text
                     maxW="29.6rem"
                     overflow="hidden"
                     textOverflow="ellipsis"
                     whiteSpace="nowrap"
                     variant="secondary"
+                    color={secondary500}
                     sx={{ fontWeight: "bold", fontSize: "5xl" }}
                   >
                     {user.displayName}
                   </Text>
-                  <Text sx={{ fontSize: "5xl" }}>でログイン中です</Text>
-                </HStack>
+                  <Text sx={{ fontSize: "5xl" }}>でログイン中</Text>
+                </VStack>
               </Flex>
-              <Button variant="account" onClick={onOpen}>
+              <Button
+                variant="account"
+                w={buttonWidth}
+                h={buttonHeight}
+                fontSize={buttonText}
+                onClick={onOpen}
+                sx={{
+                  bg: tertiary500,
+                  _hover: {
+                    bg: tertiary600,
+                    transform: "translateY(2px)",
+                    boxShadow: "0px 0px 2px #591212",
+                  },
+                }}
+              >
                 ログアウト
               </Button>
             </>
@@ -154,9 +192,9 @@ function Account() {
                 mt: "6",
                 color: "white",
                 borderRadius: "full",
-                bg: "tertiary.500",
+                bg: tertiary500,
                 _hover: {
-                  bg: "tertiary.600",
+                  bg: tertiary600,
                 },
               }}
               onClick={() => {

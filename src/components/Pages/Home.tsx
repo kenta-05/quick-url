@@ -6,6 +6,7 @@ import {
   HStack,
   Switch,
   Text,
+  useColorModeValue,
   useMediaQuery,
 } from "@chakra-ui/react";
 import UrlCard from "../Organisms/UrlCard";
@@ -19,12 +20,13 @@ import {
   doc,
 } from "@firebase/firestore";
 import { auth, db } from "../../firebase";
-import { ListObject } from "../../interfaces/mainInterface";
+import { ListObject } from "../../interfaces/Interface";
 import { Link, useNavigate } from "react-router-dom";
 import SubHeader from "../Templates/SubHeader";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 function Home() {
+  const nomal500 = useColorModeValue("nomal.500.light", "nomal.500.dark");
   const [isLargerSm] = useMediaQuery("(min-width: 380px)");
   const [isLargerMd] = useMediaQuery("(min-width: 580px)");
   const [listsData, setListsData] = useState<ListObject[]>([]);
@@ -63,13 +65,13 @@ function Home() {
           <Link
             to="/question"
             style={{
-              color: "black",
+              color: nomal500,
               fontFamily: "Noto Sans JP",
               fontSize: "1.2rem",
               textDecoration: "underline",
             }}
           >
-            Q. タブが複数個開かない場合はこちら
+            Q. タブが複数開かない場合はこちら
           </Link>
         )}
       </SubHeader>

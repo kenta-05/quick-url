@@ -17,14 +17,14 @@ import {
   HStack,
   Flex,
   useDisclosure,
-  CloseButton,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { AiOutlineClose, AiFillPlusCircle } from "react-icons/ai";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { auth, db } from "../../firebase";
 import { useToast } from "@chakra-ui/react";
 import { nanoid } from "nanoid";
-import { EmojiData } from "../../interfaces/mainInterface";
+import { EmojiData } from "../../interfaces/Interface";
 import EmojiPicker from "emoji-picker-react";
 import { EmojiClickData } from "emoji-picker-react";
 import ModalBox from "../Molecules/ModalBox";
@@ -36,6 +36,15 @@ interface SettingModalProps {
 }
 
 const SettingModal: React.FC<SettingModalProps> = ({ isOpen, onClose }) => {
+  const secondary400 = useColorModeValue(
+    "secondary.400.light",
+    "secondary.400.dark"
+  );
+  const secondary500 = useColorModeValue(
+    "secondary.500.light",
+    "secondary.500.dark"
+  );
+  const nomal500 = useColorModeValue("nomal.500.light", "nomal.500.dark");
   const [selectedIcon, setSelectedIcon] = useState<EmojiData>({
     emoji: "✨",
     names: [],
@@ -67,10 +76,10 @@ const SettingModal: React.FC<SettingModalProps> = ({ isOpen, onClose }) => {
     borderRadius: "md",
     cursor: "pointer",
     border: "2px solid",
-    borderColor: "secondary.400",
+    borderColor: secondary400,
     _focus: {
       border: "1.5px solid",
-      borderColor: "secondary.400",
+      borderColor: secondary400,
     },
   };
   const [urlsArray, setUrlsArray] = useState<string[]>([]);
@@ -124,7 +133,11 @@ const SettingModal: React.FC<SettingModalProps> = ({ isOpen, onClose }) => {
     <>
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
-        <ModalContent border="4px solid" borderColor="secondary.500">
+        <ModalContent
+          border="4px solid"
+          borderColor={secondary500}
+          bg={nomal500}
+        >
           <ModalCloseButton />
           <ModalBody>
             <Box mb="1" pt="4">
@@ -186,9 +199,9 @@ const SettingModal: React.FC<SettingModalProps> = ({ isOpen, onClose }) => {
                       sx={{
                         w: "9",
                         h: "9",
-                        color: "secondary.400",
+                        color: secondary400,
                         _hover: {
-                          color: "secondary.500",
+                          color: secondary500,
                         },
                       }}
                     />
@@ -203,10 +216,10 @@ const SettingModal: React.FC<SettingModalProps> = ({ isOpen, onClose }) => {
                 sx={{
                   borderRadius: "md",
                   fontSize: "20",
-                  color: "secondary.400",
+                  color: secondary400,
                   bg: "white",
                   border: "2px solid",
-                  borderColor: "secondary.400",
+                  borderColor: secondary400,
                   _hover: { bg: "#ececec" },
                 }}
               >
@@ -241,18 +254,17 @@ const SettingModal: React.FC<SettingModalProps> = ({ isOpen, onClose }) => {
                         fontSize: "lg",
                         color: "white",
                         cursor: "pointer",
-                        bg: "secondary.400",
+                        bg: secondary400,
                         _hover: {
-                          bg: "secondary.500",
+                          bg: secondary500,
                         },
                       }}
                     />
                     <Text
+                      color={nomal500}
                       userSelect="text"
                       fontSize="lg"
                       whiteSpace="nowrap"
-                      // overflow="hidden"
-                      // textOverflow="ellipsis"
                     >
                       {url}
                     </Text>
@@ -263,7 +275,14 @@ const SettingModal: React.FC<SettingModalProps> = ({ isOpen, onClose }) => {
             <Flex justify="end">
               <Button
                 variant="primary"
-                sx={{ mt: "8", px: "8" }}
+                sx={{
+                  mt: "8",
+                  px: "8",
+                  bg: secondary400,
+                  _hover: {
+                    bg: "#3b3b3b",
+                  },
+                }}
                 onClick={saveData}
               >
                 Save
@@ -281,6 +300,7 @@ const SettingModal: React.FC<SettingModalProps> = ({ isOpen, onClose }) => {
           h="50%"
           justifyContent="center"
           alignContent="center"
+          bg={nomal500}
         >
           <EmojiPicker onEmojiClick={handleEmojiClick} />
         </ModalContent>

@@ -18,12 +18,13 @@ import {
   HStack,
   Flex,
   useDisclosure,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { AiOutlineClose, AiFillPlusCircle } from "react-icons/ai";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase";
 import { useToast } from "@chakra-ui/react";
-import { ChangingModalProps, EmojiData } from "../../interfaces/mainInterface";
+import { ChangingModalProps, EmojiData } from "../../interfaces/Interface";
 import EmojiPicker from "emoji-picker-react";
 import { EmojiClickData } from "emoji-picker-react";
 import ModalBox from "../Molecules/ModalBox";
@@ -37,6 +38,15 @@ const ChangingModal: React.FC<ChangingModalProps> = ({
   docId,
   icon,
 }) => {
+  const secondary400 = useColorModeValue(
+    "secondary.400.light",
+    "secondary.400.dark"
+  );
+  const secondary500 = useColorModeValue(
+    "secondary.500.light",
+    "secondary.500.dark"
+  );
+  const nomal500 = useColorModeValue("nomal.500.light", "nomal.500.dark");
   const {
     isOpen: isOpenDelete,
     onOpen: onOpenDelete,
@@ -87,10 +97,10 @@ const ChangingModal: React.FC<ChangingModalProps> = ({
     borderRadius: "md",
     cursor: "pointer",
     border: "2px solid",
-    borderColor: "secondary.400",
+    borderColor: secondary400,
     _focus: {
       border: "1.5px solid",
-      borderColor: "secondary.400",
+      borderColor: secondary400,
     },
   };
 
@@ -136,7 +146,11 @@ const ChangingModal: React.FC<ChangingModalProps> = ({
     <>
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
-        <ModalContent border="4px solid" borderColor="secondary.500">
+        <ModalContent
+          border="4px solid"
+          borderColor={secondary500}
+          bg={nomal500}
+        >
           <ModalCloseButton />
           <ModalBody>
             <Box mb="1" pt="4">
@@ -198,9 +212,9 @@ const ChangingModal: React.FC<ChangingModalProps> = ({
                       sx={{
                         w: "9",
                         h: "9",
-                        color: "secondary.400",
+                        color: secondary400,
                         _hover: {
-                          color: "secondary.500",
+                          color: secondary500,
                         },
                       }}
                     />
@@ -215,10 +229,10 @@ const ChangingModal: React.FC<ChangingModalProps> = ({
                 sx={{
                   borderRadius: "md",
                   fontSize: "20",
-                  color: "secondary.400",
+                  color: secondary400,
                   bg: "white",
                   border: "2px solid",
-                  borderColor: "secondary.400",
+                  borderColor: secondary400,
                   _hover: { bg: "#ececec" },
                 }}
               >
@@ -253,18 +267,17 @@ const ChangingModal: React.FC<ChangingModalProps> = ({
                         fontSize: "lg",
                         color: "white",
                         cursor: "pointer",
-                        bg: "secondary.400",
+                        bg: secondary400,
                         _hover: {
-                          bg: "secondary.500",
+                          bg: secondary500,
                         },
                       }}
                     />
                     <Text
+                      color={nomal500}
                       userSelect="text"
                       fontSize="lg"
                       whiteSpace="nowrap"
-                      // overflow="hidden"
-                      // textOverflow="ellipsis"
                     >
                       {url}
                     </Text>
@@ -293,7 +306,14 @@ const ChangingModal: React.FC<ChangingModalProps> = ({
               </Button>
               <Button
                 variant="primary"
-                sx={{ mt: "8", px: "8" }}
+                sx={{
+                  mt: "8",
+                  px: "8",
+                  bg: secondary400,
+                  _hover: {
+                    bg: "#3b3b3b",
+                  },
+                }}
                 onClick={editData}
               >
                 Edit
@@ -306,7 +326,12 @@ const ChangingModal: React.FC<ChangingModalProps> = ({
 
       <Modal isOpen={isOpenDelete} onClose={onCloseDelete}>
         <ModalOverlay />
-        <ModalContent mt="72" border="4px solid" borderColor="secondary.500">
+        <ModalContent
+          mt="72"
+          border="4px solid"
+          borderColor={secondary500}
+          bg={nomal500}
+        >
           <ModalCloseButton />
           <ModalHeader>本当に削除してもいいですか？</ModalHeader>
           <ModalBody>
@@ -336,10 +361,9 @@ const ChangingModal: React.FC<ChangingModalProps> = ({
       <Modal isOpen={isOpenEmoji} onClose={onCloseEmoji} isCentered>
         <ModalOverlay />
         <ModalContent
-          w="100%"
-          h="50%"
           justifyContent="center"
           alignContent="center"
+          bg={nomal500}
         >
           <EmojiPicker onEmojiClick={handleEmojiClick} />
         </ModalContent>
