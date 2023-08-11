@@ -261,7 +261,7 @@ const SettingModal: React.FC<SettingModalProps> = ({ isOpen, onClose }) => {
                       }}
                     />
                     <Text
-                      color={nomal500}
+                      color="black"
                       userSelect="text"
                       fontSize="lg"
                       whiteSpace="nowrap"

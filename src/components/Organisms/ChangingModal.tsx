@@ -274,7 +274,7 @@ const ChangingModal: React.FC<ChangingModalProps> = ({
                       }}
                     />
                     <Text
-                      color={nomal500}
+                      color="black"
                       userSelect="text"
                       fontSize="lg"
                       whiteSpace="nowrap"

@@ -15,7 +15,7 @@ function Header() {
   const icon = colorMode === "light" ? icon1 : icon2;
   return (
     <>
-      <Box flex="1" position="sticky" top="0">
+      <Box flex="1" position="sticky" top="0" zIndex={10}>
         <Flex
           sx={{ bg: secondary500, h: "12", pl: "3" }}
           align="center"
