@@ -8,7 +8,7 @@ const customTheme = extendTheme({
       600: { light: "#E1E8FF", dark: "#2b2d34" },
     },
     secondary: {
-      400: { light: "#8590b7", dark: "#747474" },
+      400: { light: "#6e7aa8", dark: "#747474" },
       500: { light: "#5E6DA4", dark: "#d7d7d7" },
     },
     tertiary: {

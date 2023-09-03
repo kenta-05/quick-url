@@ -17,7 +17,12 @@ function Header() {
     <>
       <Box flex="1" position="sticky" top="0" zIndex={10}>
         <Flex
-          sx={{ bg: secondary500, h: "12", pl: "3" }}
+          sx={{
+            bg: secondary500,
+            h: "12",
+            pl: "3",
+            boxShadow: "0px 3px 5px -2px #777777", // 普通のボックスシャドウ
+          }}
           align="center"
           zIndex="10"
         >
